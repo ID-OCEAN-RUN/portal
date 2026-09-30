@@ -5,168 +5,228 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Page publique (GitHub Pages) : on évite qu'elle serve d'annuaire aux moteurs de recherche. -->
 <meta name="robots" content="noindex, nofollow">
-<title>Portail iDOcean</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314324A'/%3E%3Cpath d='M5 13c4-3 7 3 11 0s7-3 11 0M5 20c4-3 7 3 11 0s7-3 11 0' fill='none' stroke='%23C9DFEA' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<title>Portail IDOcean et SEABIM</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2306294B'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%2312A5C4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Couleurs reprises des chartes : prototype IDOcean (idocean/idocean-prototype.html)
+     et logo SEABIM (cloud-viewer/frontend/public/icon-seabim-orange.svg). */
   :root {
-    --sea: #EAF2F6;
-    --shoal: #D3E5EE;
-    --ink: #14324A;
-    --ink-soft: #4A6678;
-    --contour: #8DB3C7;
-    --isobath: #C3D9E5;
-    --chart-magenta: #A2236F;
+    --page: #F6FAFD;
+    --tile: #FFFFFF;
+    --line: #D3E3F0;
+    --navy: #06294B;
+    --ink: #122C3F;
+    --muted: #5D7689;
+    --blue: #1668BD;
+    --azure: #12A5C4;
+    --orange: #FF9D34;
+    --slate: #4A6378;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --sea: #0D2233;
-      --shoal: #16354B;
-      --ink: #DCE9F0;
-      --ink-soft: #93AFC0;
-      --contour: #2F5A73;
-      --isobath: #2F5A73;
-      --chart-magenta: #E58BC0;
+      --page: #051A2E;
+      --tile: #0A2640;
+      --line: #1B3F5E;
+      --navy: #EAF3FA;
+      --ink: #D6E4EF;
+      --muted: #8FAAC0;
     }
   }
 
   * { box-sizing: border-box; }
 
+  .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
   body {
     margin: 0;
-    background: var(--sea);
+    background: var(--page);
     color: var(--ink);
-    font: 400 1rem/1.5 "Public Sans", system-ui, sans-serif;
+    font: 400 1rem/1.5 "IBM Plex Sans", system-ui, sans-serif;
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 64rem;
+    margin: 0 auto;
   }
 
   header {
     position: relative;
     overflow: hidden;
-    padding: 4.5rem 1rem 3rem;
+    padding: 4rem 1rem 2.5rem;
   }
-  .isobaths {
+  .contours {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    color: var(--isobath);
+    color: var(--line);
   }
-  .isobaths text {
-    font: italic 400 11px "Newsreader", Georgia, serif;
-    fill: var(--isobath);
-  }
-
-  .wrap {
-    position: relative;
-    max-width: 46rem;
-    margin: 0 auto;
-  }
-
   h1 {
     margin: 0;
-    font: italic 500 clamp(2.4rem, 7vw, 3.6rem)/1.05 "Newsreader", Georgia, serif;
-    letter-spacing: -0.01em;
+    color: var(--navy);
+    font: 800 clamp(2.1rem, 6vw, 3.4rem)/1.05 "Bricolage Grotesque", system-ui, sans-serif;
+    letter-spacing: -0.02em;
   }
   header p {
     margin: 0.75rem 0 0;
-    color: var(--ink-soft);
+    color: var(--muted);
+    font-size: 1.05rem;
   }
 
   main { padding: 0 1rem 4rem; }
 
-  section + section { margin-top: 2.75rem; }
+  .group + .group { margin-top: 3.5rem; }
+
+  .idocean { --brand: var(--blue); --on-brand: #FFFFFF; }
+  .seabim  { --brand: var(--orange); --on-brand: #06294B; }
+  .autres  { --brand: var(--slate); --on-brand: #FFFFFF; }
 
   h2 {
-    margin: 0 0 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--contour);
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 1.25rem;
+    color: var(--navy);
+    font: 800 1.9rem/1 "Bricolage Grotesque", system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .mark-idocean {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin: 0 0.3rem;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--azure), var(--blue) 70%);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--azure) 20%, transparent);
+  }
+  .mark-seabim { width: 2rem; height: auto; }
+
+  .apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
-  ul { list-style: none; margin: 0; padding: 0; }
-
-  li a {
+  .app {
     display: grid;
-    grid-template-columns: 11rem 1fr;
-    column-gap: 1.5rem;
-    padding: 0.85rem 0.75rem;
-    margin: 0 -0.75rem;
-    border-radius: 6px;
+    grid-template-columns: 3rem 1fr;
+    column-gap: 1rem;
+    align-content: start;
+    height: 100%;
+    padding: 1rem 1.1rem 1.1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--tile);
     color: inherit;
     text-decoration: none;
   }
-  li a:hover { background: var(--shoal); }
-  li a:focus-visible {
-    outline: 2px solid var(--chart-magenta);
+  .app:hover { border-color: var(--brand); }
+  .app:focus-visible {
+    outline: 3px solid var(--azure);
     outline-offset: 2px;
   }
 
-  .name {
-    grid-row: span 2;
-    font: italic 500 1.35rem/1.2 "Newsreader", Georgia, serif;
+  .ico {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
-  .what { color: var(--ink); }
-  .host {
-    font-size: 0.85rem;
-    color: var(--ink-soft);
-  }
-  .lock {
-    margin-left: 0.75rem;
-    color: var(--chart-magenta);
-    white-space: nowrap;
+  .app-icon {
+    grid-row: span 3;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.7rem;
+    border-radius: 11px;
+    background: var(--brand);
+    color: var(--on-brand);
   }
 
-  @media (max-width: 36rem) {
-    header { padding-top: 3rem; }
-    li a { grid-template-columns: 1fr; }
-    .name { grid-row: auto; }
+  .name {
+    color: var(--navy);
+    font: 600 1.2rem/1.25 "Bricolage Grotesque", system-ui, sans-serif;
   }
+  .what { margin-top: 0.2rem; }
+  .host {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.75rem;
+    margin-top: 0.45rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .lock {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .lock .ico { width: 0.95rem; height: 0.95rem; }
 </style>
 </head>
 <body>
 
+<!-- Pictogrammes : Tabler Icons, licence MIT (https://tabler.io/icons). -->
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-grain" viewBox="0 0 24 24"><path d="M3.5 9.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M8.5 4.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M8.5 14.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M3.5 19.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M13.5 9.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18.5 4.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M13.5 19.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18.5 14.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></symbol>
+  <symbol id="i-wall" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12"/><path d="M4 8h16"/><path d="M20 12h-16"/><path d="M4 16h16"/><path d="M9 4v4"/><path d="M14 8v4"/><path d="M8 12v4"/><path d="M16 12v4"/><path d="M11 16v4"/></symbol>
+  <symbol id="i-layers-difference" viewBox="0 0 24 24"><path d="M16 16v2a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h2v-2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-2"/><path d="M10 8l-2 0l0 2"/><path d="M8 14l0 2l2 0"/><path d="M14 8l2 0l0 2"/><path d="M16 14l0 2l-2 0"/></symbol>
+  <symbol id="i-speedboat" viewBox="0 0 24 24"><path d="M2 17h14.4a3 3 0 0 0 2.5 -1.34l3.1 -4.66h-6.23a4 4 0 0 0 -1.49 .29l-3.56 1.42a4 4 0 0 1 -1.49 .29h-5.73l-1.5 4"/><path d="M6 13l1.5 -5"/><path d="M6 8h8l2 3"/></symbol>
+  <symbol id="i-checklist" viewBox="0 0 24 24"><path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"/><path d="M14 19l2 2l4 -4"/><path d="M9 8h4"/><path d="M9 12h2"/></symbol>
+  <symbol id="i-broadcast" viewBox="0 0 24 24"><path d="M18.364 19.364a9 9 0 1 0 -12.728 0"/><path d="M15.536 16.536a5 5 0 1 0 -7.072 0"/><path d="M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></symbol>
+  <symbol id="i-windsock" viewBox="0 0 24 24"><path d="M6 3v18"/><path d="M6 11l12 -1v-4l-12 -1"/><path d="M10 5.5v5"/><path d="M14 6v4"/><path d="M4 21h4"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4"/><path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"/><path d="M8 11v-4a4 4 0 1 1 8 0v4"/></symbol>
+</svg>
+
 <header>
-  <svg class="isobaths" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g fill="none" stroke="currentColor" stroke-width="1">
+  <svg class="contours" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="1.2">
       <path d="M-20 40 C 180 10, 320 90, 520 55 S 860 5, 1040 45 S 1180 70, 1240 40"/>
       <path d="M-20 95 C 150 70, 340 150, 560 110 S 880 60, 1060 105 S 1190 125, 1240 95"/>
       <path d="M-20 160 C 200 130, 360 215, 600 170 S 900 120, 1080 165 S 1200 180, 1240 150"/>
-      <path d="M-20 225 C 220 195, 400 270, 640 232 S 930 190, 1110 228 S 1210 240, 1240 215"/>
+      <path d="M-20 225 C 220 195, 400 250, 640 232 S 930 190, 1110 228 S 1210 240, 1240 215"/>
     </g>
-    <text x="1080" y="40">5</text>
-    <text x="1100" y="100">10</text>
-    <text x="1120" y="160">20</text>
-    <text x="1140" y="222">50</text>
   </svg>
   <div class="wrap">
-    <h1>Portail iDOcean</h1>
-    <p>Les applications web d'iDOcean et de SeaBIM.</p>
+    <h1>Portail des applications</h1>
+    <p>Accès direct aux outils web IDOcean et SEABIM.</p>
   </div>
 </header>
 
 <main>
 <div class="wrap">
-  <section aria-labelledby="seabim">
-    <h2 id="seabim">SeaBIM</h2>
-    <ul>
-      <li><a href="https://dashboard.seabim-utilities.com"><span class="name">Cloud Viewer</span><span class="what">Nuages de points 3D, orthophotos et suivi documentaire des chantiers</span><span class="host">dashboard.seabim-utilities.com</span></a></li>
-      <li><a href="https://rock-surveyor.seabim-utilities.com"><span class="name">Rock Surveyor</span><span class="what">Enrochements déplacés entre deux relevés de digue</span><span class="host">rock-surveyor.seabim-utilities.com</span></a></li>
+  <section class="group idocean" aria-labelledby="idocean">
+    <h2 id="idocean"><span class="mark-idocean" aria-hidden="true"></span>IDOcean</h2>
+    <ul class="apps">
+      <li><a class="app" href="https://nuaj.idocean-utilities.re"><svg class="ico app-icon" aria-hidden="true"><use href="#i-layers-difference"/></svg><span class="name">Nuaj</span><span class="what">Comparaison dans le temps des relevés bathymétriques</span><span class="host">nuaj.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://sillage.idocean-utilities.re"><svg class="ico app-icon" aria-hidden="true"><use href="#i-speedboat"/></svg><span class="name">Sillage</span><span class="what">Flotte de navires : positions GPS et maintenance</span><span class="host">sillage.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://kontrol.idocean-utilities.re"><svg class="ico app-icon" aria-hidden="true"><use href="#i-checklist"/></svg><span class="name">Kontrol</span><span class="what">Checklists de départ, de mission et de retour du matériel</span><span class="host">kontrol.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://buolab.idocean-utilities.re"><svg class="ico app-icon" aria-hidden="true"><use href="#i-broadcast"/></svg><span class="name">BuoLAB</span><span class="what">Supervision des bouées instrumentées</span><span class="host">buolab.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://meteocean.idocean-utilities.re"><svg class="ico app-icon" aria-hidden="true"><use href="#i-windsock"/></svg><span class="name">Meteocean</span><span class="what">Capture de la carte Windy sur un point choisi</span><span class="host">meteocean.idocean-utilities.re<span class="lock"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>mot de passe</span></span></a></li>
+      <li><a class="app" href="https://survey-planner.idocean-utilities.re"><svg class="ico app-icon" aria-hidden="true"><use href="#i-route"/></svg><span class="name">Planificateur MBES</span><span class="what">Préparation des levés bathymétriques multifaisceaux</span><span class="host">survey-planner.idocean-utilities.re<span class="lock"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>mot de passe</span></span></a></li>
     </ul>
   </section>
 
-  <section aria-labelledby="idocean">
-    <h2 id="idocean">iDOcean</h2>
-    <ul>
-      <li><a href="https://nuaj.idocean-utilities.re"><span class="name">Nuaj</span><span class="what">Comparaison dans le temps des relevés bathymétriques</span><span class="host">nuaj.idocean-utilities.re</span></a></li>
-      <li><a href="https://sillage.idocean-utilities.re"><span class="name">Sillage</span><span class="what">Flotte de navires : positions GPS et maintenance</span><span class="host">sillage.idocean-utilities.re</span></a></li>
-      <li><a href="https://kontrol.idocean-utilities.re"><span class="name">Kontrol</span><span class="what">Checklists de départ, de mission et de retour du matériel</span><span class="host">kontrol.idocean-utilities.re</span></a></li>
-      <li><a href="https://buolab.idocean-utilities.re"><span class="name">BuoLAB</span><span class="what">Supervision des bouées instrumentées</span><span class="host">buolab.idocean-utilities.re</span></a></li>
-      <li><a href="https://meteocean.idocean-utilities.re"><span class="name">Meteocean</span><span class="what">Capture de la carte Windy sur un point choisi</span><span class="host">meteocean.idocean-utilities.re<span class="lock">mot de passe</span></span></a></li>
-      <li><a href="https://survey-planner.idocean-utilities.re"><span class="name">Planificateur MBES</span><span class="what">Préparation des levés bathymétriques multifaisceaux</span><span class="host">survey-planner.idocean-utilities.re<span class="lock">mot de passe</span></span></a></li>
+  <section class="group seabim" aria-labelledby="seabim">
+    <h2 id="seabim"><svg class="mark-seabim" viewBox="0 0 52.51 47.186" aria-hidden="true"><path fill="#FF9D34" d="M25.312,0s-3.654.49-4.648,1.53c-.974,1.018-3.255,21.736-3.352,22.633C16.637,24.7.381,37.8.049,39.171c-.342,1.4,1.213,4.741,1.213,4.741l0,0s2.251,2.917,3.648,3.261,21.313-8.43,21.313-8.43l.065-.146-.024.2s20.289,7.865,21.67,7.46,3.5-3.419,3.5-3.419l0,0s1.4-3.409,1-4.79S34.482,23.807,34.482,23.807l-.1.081-.04-.043.067-.026S31.069,2.312,30.029,1.32,25.316,0,25.316,0Z"/></svg>SEABIM</h2>
+    <ul class="apps">
+      <li><a class="app" href="https://dashboard.seabim-utilities.com"><svg class="ico app-icon" aria-hidden="true"><use href="#i-grain"/></svg><span class="name">Cloud Viewer</span><span class="what">Nuages de points 3D, orthophotos et suivi documentaire des chantiers</span><span class="host">dashboard.seabim-utilities.com</span></a></li>
+      <li><a class="app" href="https://rock-surveyor.seabim-utilities.com"><svg class="ico app-icon" aria-hidden="true"><use href="#i-wall"/></svg><span class="name">Rock Surveyor</span><span class="what">Enrochements déplacés entre deux relevés de digue</span><span class="host">rock-surveyor.seabim-utilities.com</span></a></li>
+    </ul>
+  </section>
+
+  <section class="group autres" aria-labelledby="autres">
+    <h2 id="autres">Autres</h2>
+    <ul class="apps">
+      <li><a class="app" href="https://app.sunshine-immobilier.com"><svg class="ico app-icon" aria-hidden="true"><use href="#i-home"/></svg><span class="name">Sunshine</span><span class="what">Logiciel métier immobilier : transaction et gestion locative</span><span class="host">app.sunshine-immobilier.com</span></a></li>
     </ul>
   </section>
 </div>
