@@ -168,6 +168,32 @@
     gap: 0.25rem;
   }
   .lock .ico { width: 0.95rem; height: 0.95rem; }
+
+  .legal {
+    padding: 2rem 1rem 2.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.55;
+  }
+  .legal-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 1.5rem 2rem;
+  }
+  .legal h2 {
+    display: block;
+    margin: 0 0 0.35rem;
+    color: var(--ink);
+    font: 500 0.8rem/1.4 "IBM Plex Sans", system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+  .legal p { margin: 0; }
+  .legal a { color: inherit; }
+  .legal .copyright {
+    margin-top: 1.75rem;
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
@@ -231,6 +257,34 @@
   </section>
 </div>
 </main>
+
+<footer class="legal">
+<div class="wrap">
+  <div class="legal-cols">
+    <section>
+      <h2>Éditeur</h2>
+      <p>SAS ID OCEAN, au capital de 27 132,50 €<br>
+      5, rue des Seychelles, 97436 Saint-Leu, La Réunion<br>
+      RCS Saint-Denis de La Réunion 829 104 629<br>
+      <a href="mailto:contact@idocean.re">contact@idocean.re</a>, +262 6 92 30 75 01<br>
+      Directeur de la publication : Steven Le Bars</p>
+    </section>
+    <section>
+      <h2>Hébergement</h2>
+      <p>GitHub, Inc.<br>
+      88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+      +1 877 448 4820</p>
+    </section>
+    <section>
+      <h2>Données personnelles</h2>
+      <p>IDOCEAN ne dépose aucun cookie et ne collecte aucune donnée via cette page. Les polices sont chargées depuis Google Fonts, et GitHub, qui héberge la page, peut journaliser l'adresse IP des visiteurs. Chaque application a ses propres conditions d'utilisation.</p>
+    </section>
+  </div>
+  <p class="copyright">© IDOCEAN <span id="year">2026</span></p>
+</div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 
 </body>
 </html>
