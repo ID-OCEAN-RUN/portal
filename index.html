@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Page publique (GitHub Pages) : on évite qu'elle serve d'annuaire aux moteurs de recherche. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Portail iDOcean</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314324A'/%3E%3Cpath d='M5 13c4-3 7 3 11 0s7-3 11 0M5 20c4-3 7 3 11 0s7-3 11 0' fill='none' stroke='%23C9DFEA' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea: #EAF2F6;
+    --shoal: #D3E5EE;
+    --ink: #14324A;
+    --ink-soft: #4A6678;
+    --contour: #8DB3C7;
+    --isobath: #C3D9E5;
+    --chart-magenta: #A2236F;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sea: #0D2233;
+      --shoal: #16354B;
+      --ink: #DCE9F0;
+      --ink-soft: #93AFC0;
+      --contour: #2F5A73;
+      --isobath: #2F5A73;
+      --chart-magenta: #E58BC0;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--sea);
+    color: var(--ink);
+    font: 400 1rem/1.5 "Public Sans", system-ui, sans-serif;
+  }
+
+  header {
+    position: relative;
+    overflow: hidden;
+    padding: 4.5rem 1rem 3rem;
+  }
+  .isobaths {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--isobath);
+  }
+  .isobaths text {
+    font: italic 400 11px "Newsreader", Georgia, serif;
+    fill: var(--isobath);
+  }
+
+  .wrap {
+    position: relative;
+    max-width: 46rem;
+    margin: 0 auto;
+  }
+
+  h1 {
+    margin: 0;
+    font: italic 500 clamp(2.4rem, 7vw, 3.6rem)/1.05 "Newsreader", Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+  header p {
+    margin: 0.75rem 0 0;
+    color: var(--ink-soft);
+  }
+
+  main { padding: 0 1rem 4rem; }
+
+  section + section { margin-top: 2.75rem; }
+
+  h2 {
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--contour);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+
+  li a {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    column-gap: 1.5rem;
+    padding: 0.85rem 0.75rem;
+    margin: 0 -0.75rem;
+    border-radius: 6px;
+    color: inherit;
+    text-decoration: none;
+  }
+  li a:hover { background: var(--shoal); }
+  li a:focus-visible {
+    outline: 2px solid var(--chart-magenta);
+    outline-offset: 2px;
+  }
+
+  .name {
+    grid-row: span 2;
+    font: italic 500 1.35rem/1.2 "Newsreader", Georgia, serif;
+  }
+  .what { color: var(--ink); }
+  .host {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .lock {
+    margin-left: 0.75rem;
+    color: var(--chart-magenta);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 36rem) {
+    header { padding-top: 3rem; }
+    li a { grid-template-columns: 1fr; }
+    .name { grid-row: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="isobaths" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="currentColor" stroke-width="1">
+      <path d="M-20 40 C 180 10, 320 90, 520 55 S 860 5, 1040 45 S 1180 70, 1240 40"/>
+      <path d="M-20 95 C 150 70, 340 150, 560 110 S 880 60, 1060 105 S 1190 125, 1240 95"/>
+      <path d="M-20 160 C 200 130, 360 215, 600 170 S 900 120, 1080 165 S 1200 180, 1240 150"/>
+      <path d="M-20 225 C 220 195, 400 270, 640 232 S 930 190, 1110 228 S 1210 240, 1240 215"/>
+    </g>
+    <text x="1080" y="40">5</text>
+    <text x="1100" y="100">10</text>
+    <text x="1120" y="160">20</text>
+    <text x="1140" y="222">50</text>
+  </svg>
+  <div class="wrap">
+    <h1>Portail iDOcean</h1>
+    <p>Les applications web d'iDOcean et de SeaBIM.</p>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <section aria-labelledby="seabim">
+    <h2 id="seabim">SeaBIM</h2>
+    <ul>
+      <li><a href="https://dashboard.seabim-utilities.com"><span class="name">Cloud Viewer</span><span class="what">Nuages de points 3D, orthophotos et suivi documentaire des chantiers</span><span class="host">dashboard.seabim-utilities.com</span></a></li>
+      <li><a href="https://rock-surveyor.seabim-utilities.com"><span class="name">Rock Surveyor</span><span class="what">Enrochements déplacés entre deux relevés de digue</span><span class="host">rock-surveyor.seabim-utilities.com</span></a></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="idocean">
+    <h2 id="idocean">iDOcean</h2>
+    <ul>
+      <li><a href="https://nuaj.idocean-utilities.re"><span class="name">Nuaj</span><span class="what">Comparaison dans le temps des relevés bathymétriques</span><span class="host">nuaj.idocean-utilities.re</span></a></li>
+      <li><a href="https://sillage.idocean-utilities.re"><span class="name">Sillage</span><span class="what">Flotte de navires : positions GPS et maintenance</span><span class="host">sillage.idocean-utilities.re</span></a></li>
+      <li><a href="https://kontrol.idocean-utilities.re"><span class="name">Kontrol</span><span class="what">Checklists de départ, de mission et de retour du matériel</span><span class="host">kontrol.idocean-utilities.re</span></a></li>
+      <li><a href="https://buolab.idocean-utilities.re"><span class="name">BuoLAB</span><span class="what">Supervision des bouées instrumentées</span><span class="host">buolab.idocean-utilities.re</span></a></li>
+      <li><a href="https://meteocean.idocean-utilities.re"><span class="name">Meteocean</span><span class="what">Capture de la carte Windy sur un point choisi</span><span class="host">meteocean.idocean-utilities.re<span class="lock">mot de passe</span></span></a></li>
+      <li><a href="https://survey-planner.idocean-utilities.re"><span class="name">Planificateur MBES</span><span class="what">Préparation des levés bathymétriques multifaisceaux</span><span class="host">survey-planner.idocean-utilities.re<span class="lock">mot de passe</span></span></a></li>
+    </ul>
+  </section>
+</div>
+</main>
+
+</body>
+</html>
