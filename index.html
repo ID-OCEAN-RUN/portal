@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Couleurs reprises des chartes : prototype ID OCEAN (ID OCEAN/idocean-prototype.html)
+  /* Couleurs reprises des chartes : prototype ID OCEAN (idocean/idocean-prototype.html)
      et logo SEABIM (cloud-viewer/frontend/public/icon-seabim-orange.svg). */
   :root {
     --page: #F6FAFD;
@@ -81,7 +81,7 @@
 
   .group + .group { margin-top: 3.5rem; }
 
-  .ID OCEAN { --brand: var(--blue); --on-brand: #FFFFFF; }
+  .idocean { --brand: var(--blue); --on-brand: #FFFFFF; }
   .seabim  { --brand: var(--orange); --on-brand: #06294B; }
   .autres  { --brand: var(--slate); --on-brand: #FFFFFF; }
 
@@ -94,7 +94,7 @@
     font: 800 1.9rem/1 "Bricolage Grotesque", system-ui, sans-serif;
     letter-spacing: -0.01em;
   }
-  .mark-ID OCEAN {
+  .mark-idocean {
     width: 1.1rem;
     height: 1.1rem;
     margin: 0 0.3rem;
@@ -148,6 +148,7 @@
     background: var(--brand);
     color: var(--on-brand);
   }
+  .app-logo { padding: 0; background: none; }
 
   .name {
     color: var(--navy);
@@ -229,8 +230,8 @@
 
 <main>
 <div class="wrap">
-  <section class="group ID OCEAN" aria-labelledby="ID OCEAN">
-    <h2 id="ID OCEAN"><span class="mark-ID OCEAN" aria-hidden="true"></span>ID OCEAN</h2>
+  <section class="group idocean" aria-labelledby="idocean">
+    <h2 id="idocean"><span class="mark-idocean" aria-hidden="true"></span>ID OCEAN</h2>
     <ul class="apps">
       <li><a class="app" href="https://nuaj.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-layers-difference"/></svg><span class="name">Nuaj</span><span class="what">Comparaison dans le temps des relevés bathymétriques</span><span class="host">nuaj.idocean-utilities.re</span></a></li>
       <li><a class="app" href="https://sillage.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-speedboat"/></svg><span class="name">Sillage</span><span class="what">Flotte de navires : positions GPS et maintenance</span><span class="host">sillage.idocean-utilities.re</span></a></li>
@@ -238,6 +239,7 @@
       <li><a class="app" href="https://buolab.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-broadcast"/></svg><span class="name">BuoLAB</span><span class="what">Supervision des bouées instrumentées</span><span class="host">buolab.idocean-utilities.re</span></a></li>
       <li><a class="app" href="https://meteocean.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-windsock"/></svg><span class="name">Meteocean</span><span class="what">Capture de la carte Windy sur un point choisi</span><span class="host">meteocean.idocean-utilities.re<span class="lock"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>mot de passe</span></span></a></li>
       <li><a class="app" href="https://survey-planner.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-route"/></svg><span class="name">Planificateur MBES</span><span class="what">Préparation des levés bathymétriques multifaisceaux</span><span class="host">survey-planner.idocean-utilities.re<span class="lock"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>mot de passe</span></span></a></li>
+      <li><a class="app" href="https://aplomb.idocean-utilities.re" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#f4b000"/><g transform="rotate(-12 16 9)" fill="#1d2527"><path d="M7.5 7.25H26.25V10.75H7.5A1.75 1.75 0 0 1 7.5 7.25Z"/><path d="M16 11.6L14.416 24.503A13 13 0 0 0 17.584 24.503Z"/><path d="M13.56 27.008A15.6 15.6 0 0 0 18.44 27.008" fill="none" stroke="#1d2527" stroke-width="1.5" stroke-linecap="round"/></g></svg><span class="name">Aplomb</span><span class="what">Traitement bathymétrique des levés réalisés par les USV</span><span class="host">aplomb.idocean-utilities.re</span></a></li>
     </ul>
   </section>
 
