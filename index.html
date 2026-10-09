@@ -82,8 +82,8 @@
   .group + .group { margin-top: 3.5rem; }
 
   .idocean { --brand: var(--blue); --on-brand: #FFFFFF; }
-  .seabim  { --brand: var(--orange); --on-brand: #06294B; }
-  .autres  { --brand: var(--slate); --on-brand: #FFFFFF; }
+  .seabim  { --brand: var(--orange); }
+  .autres  { --brand: var(--slate); }
 
   h2 {
     display: flex;
@@ -149,6 +149,8 @@
     color: var(--on-brand);
   }
   .app-logo { padding: 0; background: none; }
+  /* Logo matriciel détouré : sans fond, son bleu marine disparaît sur la tuile sombre. */
+  .app-logo-white { padding: 0.3rem; background: #FFFFFF; }
 
   .name {
     color: var(--navy);
@@ -201,15 +203,8 @@
 
 <!-- Pictogrammes : Tabler Icons, licence MIT (https://tabler.io/icons). -->
 <svg class="sprite" aria-hidden="true">
-  <symbol id="i-grain" viewBox="0 0 24 24"><path d="M3.5 9.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M8.5 4.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M8.5 14.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M3.5 19.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M13.5 9.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18.5 4.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M13.5 19.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/><path d="M18.5 14.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></symbol>
-  <symbol id="i-wall" viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12"/><path d="M4 8h16"/><path d="M20 12h-16"/><path d="M4 16h16"/><path d="M9 4v4"/><path d="M14 8v4"/><path d="M8 12v4"/><path d="M16 12v4"/><path d="M11 16v4"/></symbol>
-  <symbol id="i-layers-difference" viewBox="0 0 24 24"><path d="M16 16v2a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2v-8a2 2 0 0 1 2 -2h2v-2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-2"/><path d="M10 8l-2 0l0 2"/><path d="M8 14l0 2l2 0"/><path d="M14 8l2 0l0 2"/><path d="M16 14l0 2l-2 0"/></symbol>
-  <symbol id="i-speedboat" viewBox="0 0 24 24"><path d="M2 17h14.4a3 3 0 0 0 2.5 -1.34l3.1 -4.66h-6.23a4 4 0 0 0 -1.49 .29l-3.56 1.42a4 4 0 0 1 -1.49 .29h-5.73l-1.5 4"/><path d="M6 13l1.5 -5"/><path d="M6 8h8l2 3"/></symbol>
-  <symbol id="i-checklist" viewBox="0 0 24 24"><path d="M9.615 20h-2.615a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8"/><path d="M14 19l2 2l4 -4"/><path d="M9 8h4"/><path d="M9 12h2"/></symbol>
-  <symbol id="i-broadcast" viewBox="0 0 24 24"><path d="M18.364 19.364a9 9 0 1 0 -12.728 0"/><path d="M15.536 16.536a5 5 0 1 0 -7.072 0"/><path d="M11 13a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/></symbol>
   <symbol id="i-windsock" viewBox="0 0 24 24"><path d="M6 3v18"/><path d="M6 11l12 -1v-4l-12 -1"/><path d="M10 5.5v5"/><path d="M14 6v4"/><path d="M4 21h4"/></symbol>
   <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"/><path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4"/><path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5"/></symbol>
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="M5 12l-2 0l9 -9l9 9l-2 0"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"/><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6"/><path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"/><path d="M8 11v-4a4 4 0 1 1 8 0v4"/></symbol>
 </svg>
 
@@ -233,29 +228,29 @@
   <section class="group idocean" aria-labelledby="idocean">
     <h2 id="idocean"><span class="mark-idocean" aria-hidden="true"></span>ID OCEAN</h2>
     <ul class="apps">
-      <li><a class="app" href="https://nuaj.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-layers-difference"/></svg><span class="name">Nuaj</span><span class="what">Comparaison dans le temps des relevés bathymétriques</span><span class="host">nuaj.idocean-utilities.re</span></a></li>
-      <li><a class="app" href="https://sillage.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-speedboat"/></svg><span class="name">Sillage</span><span class="what">Flotte de navires : positions GPS et maintenance</span><span class="host">sillage.idocean-utilities.re</span></a></li>
-      <li><a class="app" href="https://kontrol.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-checklist"/></svg><span class="name">Kontrol</span><span class="what">Checklists de départ, de mission et de retour du matériel</span><span class="host">kontrol.idocean-utilities.re</span></a></li>
-      <li><a class="app" href="https://buolab.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-broadcast"/></svg><span class="name">BuoLAB</span><span class="what">Supervision des bouées instrumentées</span><span class="host">buolab.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://nuaj.idocean-utilities.re" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 150 150" aria-hidden="true"><defs><linearGradient id="nuaj-sound" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dce9f9"/><stop offset="52%" stop-color="#a3c4ec"/><stop offset="100%" stop-color="#5a8fd0"/></linearGradient></defs><rect width="150" height="150" rx="33" fill="#365278"/><g transform="translate(9.5 21.5)" fill="none" stroke-linecap="round"><path d="M22,76 C9,76 4,60 15,52 C11,34 32,23 47,32 C55,17 80,16 89,31 C106,26 120,39 115,52 C127,56 124,76 112,76" stroke="url(#nuaj-sound)" stroke-width="8" stroke-dasharray="0.01 16"/><path d="M24,84 C26,64 46,54 68,59 C86,63 90,78 77,84 C67,88 56,82 59,73 C61,66 71,66 74,72" stroke="#dce9f9" stroke-width="9"/></g></svg><span class="name">Nuaj</span><span class="what">Comparaison dans le temps des relevés bathymétriques</span><span class="host">nuaj.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://sillage.idocean-utilities.re" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 256 256" aria-hidden="true"><defs><clipPath id="navis-clip"><path d="M 128,28 L 212,66 C 212,66 212,120 210,140 C 205,184 174,215 128,234 C 82,215 51,184 46,140 C 44,120 44,66 44,66 Z"/></clipPath></defs><rect width="256" height="256" rx="56" fill="#fff"/><g transform="translate(128 128) scale(.82) translate(-128 -131)"><path d="M 128,28 L 212,66 C 212,66 212,120 210,140 C 205,184 174,215 128,234 C 82,215 51,184 46,140 C 44,120 44,66 44,66 Z" fill="#fff" stroke="#0D2E4F" stroke-width="13" stroke-linejoin="round"/><g clip-path="url(#navis-clip)"><path d="M -20,150 C 22,136 54,136 92,150 C 118,162.6 138,162.6 164,150 C 202,136 234,136 276,150 L 276,300 L -20,300 Z" fill="#0D2E4F"/><path d="M -20,166 C 22,152 54,152 92,166 C 118,178.6 138,178.6 164,166 C 202,152 234,152 276,166 L 276,300 L -20,300 Z" fill="#fff"/><path d="M -20,184 C 22,170 54,170 92,184 C 118,196.6 138,196.6 164,184 C 202,170 234,170 276,184 L 276,300 L -20,300 Z" fill="#0D2E4F"/></g><path d="M128 54 C151 54 169 72 169 95 C169 128 128 162 128 162 C128 162 87 128 87 95 C87 72 105 54 128 54 Z" fill="#F36F21"/><circle cx="128" cy="94" r="15" fill="#fff"/></g></svg><span class="name">Sillage</span><span class="what">Flotte de navires : positions GPS et maintenance</span><span class="host">sillage.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://kontrol.idocean-utilities.re" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 192 192" aria-hidden="true"><rect width="192" height="192" rx="42" fill="#fff"/><g transform="translate(52.8 48) scale(.96)"><rect width="36" height="100" fill="#ffc20e"/><path d="M42 0H90L58 50L90 100H42Z" fill="#1e3f9e"/></g></svg><span class="name">Kontrol</span><span class="what">Checklists de départ, de mission et de retour du matériel</span><span class="host">kontrol.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://buolab.idocean-utilities.re" target="_blank"><img class="app-icon app-logo app-logo-white" src="icons/buolab.png" alt=""><span class="name">BuoLAB</span><span class="what">Supervision des bouées instrumentées</span><span class="host">buolab.idocean-utilities.re</span></a></li>
       <li><a class="app" href="https://meteocean.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-windsock"/></svg><span class="name">Meteocean</span><span class="what">Capture de la carte Windy sur un point choisi</span><span class="host">meteocean.idocean-utilities.re<span class="lock"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>mot de passe</span></span></a></li>
       <li><a class="app" href="https://survey-planner.idocean-utilities.re" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-route"/></svg><span class="name">Planificateur MBES</span><span class="what">Préparation des levés bathymétriques multifaisceaux</span><span class="host">survey-planner.idocean-utilities.re<span class="lock"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>mot de passe</span></span></a></li>
       <li><a class="app" href="https://aplomb.idocean-utilities.re" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#f4b000"/><g transform="rotate(-12 16 9)" fill="#1d2527"><path d="M7.5 7.25H26.25V10.75H7.5A1.75 1.75 0 0 1 7.5 7.25Z"/><path d="M16 11.6L14.416 24.503A13 13 0 0 0 17.584 24.503Z"/><path d="M13.56 27.008A15.6 15.6 0 0 0 18.44 27.008" fill="none" stroke="#1d2527" stroke-width="1.5" stroke-linecap="round"/></g></svg><span class="name">Aplomb</span><span class="what">Traitement bathymétrique des levés réalisés par les USV</span><span class="host">aplomb.idocean-utilities.re</span></a></li>
-      <li><a class="app" href="https://seagrad.idocean-utilities.re" target="_blank"><img class="app-icon app-logo" src="icons/seagrad.jpg" alt=""><span class="name">Seagrad</span><span class="what">Suivi BIM du terrassement maritime des fondations d'un viaduc</span><span class="host">seagrad.idocean-utilities.re</span></a></li>
+      <li><a class="app" href="https://seagrad.idocean-utilities.re" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#38517A"/><path d="M22 42 Q35 26 50 36 T78 38" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round"/><circle cx="50" cy="40" r="6.5" fill="#fff"/><rect x="34" y="58" width="32" height="5.5" rx="2.75" fill="#fff"/><rect x="38" y="68" width="24" height="5.5" rx="2.75" fill="#fff" opacity=".82"/><rect x="42" y="78" width="16" height="5.5" rx="2.75" fill="#fff" opacity=".6"/></svg><span class="name">Seagrad</span><span class="what">Suivi BIM du terrassement maritime des fondations d'un viaduc</span><span class="host">seagrad.idocean-utilities.re</span></a></li>
     </ul>
   </section>
 
   <section class="group seabim" aria-labelledby="seabim">
     <h2 id="seabim"><svg class="mark-seabim" viewBox="0 0 52.51 47.186" aria-hidden="true"><path fill="#FF9D34" d="M25.312,0s-3.654.49-4.648,1.53c-.974,1.018-3.255,21.736-3.352,22.633C16.637,24.7.381,37.8.049,39.171c-.342,1.4,1.213,4.741,1.213,4.741l0,0s2.251,2.917,3.648,3.261,21.313-8.43,21.313-8.43l.065-.146-.024.2s20.289,7.865,21.67,7.46,3.5-3.419,3.5-3.419l0,0s1.4-3.409,1-4.79S34.482,23.807,34.482,23.807l-.1.081-.04-.043.067-.026S31.069,2.312,30.029,1.32,25.316,0,25.316,0Z"/></svg>SEABIM</h2>
     <ul class="apps">
-      <li><a class="app" href="https://dashboard.seabim-utilities.com" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-grain"/></svg><span class="name">Cloud Viewer</span><span class="what">Nuages de points 3D, orthophotos et suivi documentaire des chantiers</span><span class="host">dashboard.seabim-utilities.com</span></a></li>
-      <li><a class="app" href="https://rock-surveyor.seabim-utilities.com" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-wall"/></svg><span class="name">Rock Surveyor</span><span class="what">Enrochements déplacés entre deux relevés de digue</span><span class="host">rock-surveyor.seabim-utilities.com</span></a></li>
+      <li><a class="app" href="https://dashboard.seabim-utilities.com" target="_blank"><img class="app-icon app-logo" src="icons/cloud-viewer.jpg" alt=""><span class="name">Cloud Viewer</span><span class="what">Nuages de points 3D, orthophotos et suivi documentaire des chantiers</span><span class="host">dashboard.seabim-utilities.com</span></a></li>
+      <li><a class="app" href="https://rock-surveyor.seabim-utilities.com" target="_blank"><svg class="app-icon app-logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f1d27"/><g transform="translate(5.3 5.3) scale(.66)"><g fill="#e9ebec"><rect x="2" y="2" width="11" height="11" rx="2"/><rect x="16" y="2" width="11" height="11" rx="2"/><rect x="2" y="16" width="11" height="11" rx="2"/></g><rect x="-5.5" y="-5.5" width="11" height="11" rx="2" fill="#ea8652" transform="translate(23.5 23.5) rotate(20)"/></g></svg><span class="name">Rock Surveyor</span><span class="what">Enrochements déplacés entre deux relevés de digue</span><span class="host">rock-surveyor.seabim-utilities.com</span></a></li>
     </ul>
   </section>
 
   <section class="group autres" aria-labelledby="autres">
     <h2 id="autres">Autres</h2>
     <ul class="apps">
-      <li><a class="app" href="https://app.sunshine-immobilier.com" target="_blank"><svg class="ico app-icon" aria-hidden="true"><use href="#i-home"/></svg><span class="name">Sunshine</span><span class="what">Logiciel métier immobilier : transaction et gestion locative</span><span class="host">app.sunshine-immobilier.com</span></a></li>
+      <li><a class="app" href="https://app.sunshine-immobilier.com" target="_blank"><img class="app-icon app-logo" src="icons/sunshine.svg" alt=""><span class="name">Sunshine</span><span class="what">Logiciel métier immobilier : transaction et gestion locative</span><span class="host">app.sunshine-immobilier.com</span></a></li>
     </ul>
   </section>
 </div>
